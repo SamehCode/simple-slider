@@ -71,6 +71,7 @@ document.querySelectorAll('ul.bullets li').forEach(li => {
         allSlides[e.target.dataset.num -1].classList.add('active')
         allSlidesImgs.forEach(img => img.classList.remove('active'))
         allSlidesImgs[e.target.dataset.num - 1].classList.add('active')
+        currentslide = e.target.dataset.num - 1
     })
     
     } 
