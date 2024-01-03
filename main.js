@@ -9,6 +9,8 @@ let allSlides = document.querySelectorAll('.slider-imgs .image'),
     backImg = document.querySelector('.back-img');
 let bullet,
     allBullets = bulletsContainer.children;
+let allLis = document.querySelectorAll('ul.bullets li');
+    
 
 allImages.forEach((img, idx) => {
     bullet = `<li class='bullet' data-num='${idx + 1}'>${idx + 1}</li>`;
@@ -20,12 +22,11 @@ bulletsContainer.children[0].classList.add('active')
 prevBtn.onclick = prevSlide;
 nextBtn.onclick = nextSlide;
 
-//prev btn logic
+//prev slide logic
 
 function prevSlide () {
     currentslide--
-    console.log(currentslide)
-    if(currentslide == '0') {
+    if(currentslide <= '0') {
         prevBtn.classList.add('disabled')
         currentslide = allImages.length + 1
         // return false
@@ -61,4 +62,16 @@ function nextSlide () {
 }
 
 
-// console.log(backImg.style.backgroundImage = `url(./imgs/img2.jpg)`);
+document.querySelectorAll('ul.bullets li').forEach(li => {
+    li.addEventListener('click', (e) => {
+        document.querySelectorAll('ul.bullets li').forEach(li => li.classList.remove('active'))
+        e.target.classList.add('active')
+        backImg.style.backgroundImage = 'url(imgs/' + allImages[e.target.dataset.num - 1] + '.jpg)';
+        allSlides.forEach(slide => slide.classList.remove('active'))
+        allSlides[e.target.dataset.num -1].classList.add('active')
+        allSlidesImgs.forEach(img => img.classList.remove('active'))
+        allSlidesImgs[e.target.dataset.num - 1].classList.add('active')
+    })
+    
+    } 
+)
