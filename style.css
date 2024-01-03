@@ -47,6 +47,7 @@ ul {
         }
     }
     .slider-imgs {
+        width: 100%;
         display: flex;
         position: absolute;
         gap: 5px;
